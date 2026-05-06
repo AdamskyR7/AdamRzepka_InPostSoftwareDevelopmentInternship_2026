@@ -18,9 +18,7 @@ DataMapper's function generateMap is the script responsible for generating the .
 
 [Link to the site](https://adamskyr7.github.io/AdamRzepka_InPostSoftwareDevelopmentInternship_2026/PaczkomatMap.html)
 <img width="1264" height="920" alt="image" src="https://github.com/user-attachments/assets/db7b4208-a558-4288-936d-1d7e99236a1a" />
-
 <img width="1571" height="1292" alt="image" src="https://github.com/user-attachments/assets/bfccb041-9e9d-4b9f-b431-f9dcabdeae8a" />
-
 <img width="1652" height="1234" alt="image" src="https://github.com/user-attachments/assets/8fcca359-6e9d-4208-8efa-80d6c0c7ac75" />
 
 

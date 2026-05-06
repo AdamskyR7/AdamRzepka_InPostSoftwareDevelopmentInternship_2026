@@ -6,30 +6,39 @@ def generateMap(df: pd.DataFrame, fileName: str = "PaczkomatMap.html"):
 
     df = df.dropna(subset=['location.latitude', 'location.longitude'])
 
-    df = df[df['country'] == 'PL']
-
     center_lat = df['location.latitude'].mean()
     center_lon = df['location.longitude'].mean()
 
     fMap = folium.Map(location=[center_lat, center_lon], zoom_start=5, tiles='CartoDB positron')
 
-    usefuldata = df[['location.latitude', 'location.longitude']].values.tolist()
+    name = df['name'].fillna('')
+    street =df['address_details.street'].fillna('')
+    building_number = df['address_details.building_number'].fillna('')
+    post_code = df['address_details.post_code'].fillna('')
+    city = df['address_details.city'].fillna('')
 
-    cluster = FastMarkerCluster(data=usefuldata,name="Paczkomaty").add_to(fMap)
+    df['popup_text'] = name + " - " + street + " " + building_number + ", " + post_code + " " + city
 
-    # for index, row in df.iterrows():
-    #     lat = row['location.latitude']
-    #     lon = row['location.longitude']
-    #     name = row['name']
-    #     address = f"{row['address_details.street']} {row['address_details.building_number']}, {row['address_details.post_code']}, {row['address_details.city']}"
-    #
-    #     folium.CircleMarker(
-    #         location=[lat, lon],
-    #         popup=f'{name} - {address}'#,
-    #         #icon=folium.Icon()
-    #     ).add_to(cluster)
+    df['popup_text'] = df['popup_text'].str.replace(r"[\"\'\n\r]", " ", regex=True)
 
+    usefuldata = df[['location.latitude', 'location.longitude', 'popup_text']].values.tolist()
 
+    js_callback = """
+    function (row) {
+        var marker = L.circleMarker(new L.LatLng(row[0], row[1]), {
+            radius: 10,
+            color: '#FFFFFF',
+            fillColor: '#FFCB00',
+            fillOpacity: 0.8
+        });
+        if (row[2]){
+            marker.bindPopup(row[2]);
+        }
+        return marker;
+    }
+    """
+
+    FastMarkerCluster(data=usefuldata,callback=js_callback,name="Paczkomaty").add_to(fMap)
 
     fMap.save(fileName)
     print(f"Saved map to {fileName}")

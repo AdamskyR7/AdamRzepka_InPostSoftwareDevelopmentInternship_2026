@@ -1,4 +1,3 @@
-import pandas as pd
 from dataHandler import getData
 from dataMapper import generateMap
 

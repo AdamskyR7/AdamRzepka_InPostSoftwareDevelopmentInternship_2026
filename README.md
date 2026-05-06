@@ -12,7 +12,7 @@ This project is a simple Python mapper. It takes the data from API and puts each
 ## Demo & Description
 
 The project is split into two scripts. First is the dataHandler which is responsible for loading the data and the second is dataMapper which genereates the map.
-DataHandler's function getData can work in two ways geting the data from local json file (if the file is available) or straight from the API, after getting the data from API the scripts saves it to the local json file to cut the data download time for the next time it's needed. The data is then returned as Pandas DataFrame for easier modification.
+DataHandler's function getData can work in two ways geting the data from local json file (if the file is available) or straight from the API, after getting the data from API the scripts saves it to the local json file to cut the data download time for the next time it's needed. The data is then returned as Pandas DataFrame for easier modification.<br>
 DataMapper's function generateMap is the script responsible for generating the .html file with the interactive map. It uses Folium with it's built in plugins FastMarkerCluster, to cluster the points on the map when zoomed out and HeatMap, to create a heat map. The function has two arguments a Pandas DataFrame and an optional string filename. The map is generated in an html file with the name provided in the function (or the default if not provided).
 
 
@@ -26,23 +26,23 @@ DataMapper's function generateMap is the script responsible for generating the .
 
 ## Technologies
 
-Python - great for quick projects
-Pandas - better data containers
-Folium - built in map visualization
-JavaScript - can handle more operations than python at once
+Python - great for quick projects<br>
+Pandas - better data containers<br>
+Folium - built in map visualization<br>
+JavaScript - can handle more operations than python at once<br>
 
 ## How to run
 
 ### Prerequisites
 
-Python 3.13
-Web browser
-internet access
+Python 3.13<br>
+Web browser<br>
+internet access<br>
 
-Python Bibliotheques
-Pandas
-Folium
-Requests
+Python Bibliotheques<br>
+Pandas<br>
+Folium<br>
+Requests<br>
 
 ### Build & run
 
@@ -61,6 +61,3 @@ implement finding the closest point to the provided location by road/pedestrian 
 ## AI usage
 
 Google Gemini pro - better web browser to look up how certain things can be done and debugging help to show possible fixes
-
-## Anything else?
-
